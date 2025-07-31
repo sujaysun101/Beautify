@@ -1,0 +1,82 @@
+.logo-banner {
+  padding: 40px 0;
+  background-color: #f8f9fa;
+  overflow: hidden;
+  position: relative;
+}
+
+.logo-banner::before,
+.logo-banner::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  width: 150px;
+  height: 100%;
+  z-index: 2;
+}
+
+.logo-banner::before {
+  left: 0;
+  background: linear-gradient(to right, #f8f9fa, transparent);
+}
+
+.logo-banner::after {
+  right: 0;
+  background: linear-gradient(to left, #f8f9fa, transparent);
+}
+
+.logo-banner-container {
+  max-width: 100%;
+  margin: 0 auto;
+}
+
+.logo-scroll {
+  display: flex;
+  animation: scrollLogos 30s linear infinite;
+  width: fit-content;
+}
+
+.logo-item {
+  flex: 0 0 auto;
+  margin: 0 30px;
+}
+
+.logo-placeholder {
+  width: 160px;
+  height: 80px;
+  background: #fff;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #bbb;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.logo-placeholder:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.12);
+}
+
+@keyframes scrollLogos {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    /* The negative width needs to be half of the total width of all logos */
+    transform: translateX(-50%);
+  }
+}
+
+@media (max-width: 768px) {
+  .logo-placeholder {
+    width: 120px;
+    height: 60px;
+    font-size: 0.9rem;
+  }
+  
+  .logo-item {
+    margin: 0 20px;
+  }
+}

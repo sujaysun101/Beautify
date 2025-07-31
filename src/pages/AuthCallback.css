@@ -1,0 +1,59 @@
+/* Auth Callback Page Styles */
+.auth-callback-page {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  padding: 20px;
+}
+
+.auth-callback-container {
+  width: 100%;
+  max-width: 400px;
+}
+
+.auth-callback-card {
+  border-radius: 12px;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+  border: none;
+  -webkit-backdrop-filter: blur(10px);
+  backdrop-filter: blur(10px);
+}
+
+.auth-callback-content {
+  text-align: center;
+  padding: 40px 20px;
+}
+
+.auth-callback-content .ant-typography h3 {
+  color: #1a1a1a;
+  font-weight: 600;
+}
+
+.auth-callback-content .ant-spin {
+  color: #667eea;
+}
+
+.auth-callback-content .ant-spin .ant-spin-dot-item {
+  background-color: #667eea;
+}
+
+/* Responsive design */
+@media (max-width: 480px) {
+  .auth-callback-page {
+    padding: 10px;
+  }
+  
+  .auth-callback-container {
+    max-width: 100%;
+  }
+  
+  .auth-callback-card {
+    margin: 0 10px;
+  }
+  
+  .auth-callback-content {
+    padding: 30px 15px;
+  }
+}

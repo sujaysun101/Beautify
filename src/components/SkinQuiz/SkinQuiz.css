@@ -1,0 +1,287 @@
+/* SkinQuiz Component Styles */
+.skin-quiz {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 24px;
+  min-height: 100vh;
+  background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+}
+
+.quiz-header {
+  text-align: center;
+  margin-bottom: 32px;
+  padding: 24px;
+  background: white;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.quiz-header .ant-typography h2 {
+  color: #1a1a1a;
+  margin-bottom: 8px;
+}
+
+.quiz-container {
+  display: flex;
+  gap: 24px;
+  align-items: flex-start;
+}
+
+.quiz-sidebar {
+  min-width: 280px;
+  background: white;
+  padding: 24px;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  height: fit-content;
+  position: sticky;
+  top: 24px;
+}
+
+.quiz-content {
+  flex: 1;
+  min-height: 600px;
+}
+
+.step-card {
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  border: none;
+  min-height: 600px;
+}
+
+.step-card .ant-card-body {
+  padding: 32px;
+}
+
+/* Steps styling */
+.quiz-sidebar .ant-steps-item-title {
+  font-weight: 500;
+  color: #1a1a1a;
+}
+
+.quiz-sidebar .ant-steps-item-description {
+  color: #666;
+  font-size: 12px;
+}
+
+.quiz-sidebar .ant-steps-item-process .ant-steps-item-icon {
+  background-color: #667eea;
+  border-color: #667eea;
+}
+
+.quiz-sidebar .ant-steps-item-finish .ant-steps-item-icon {
+  background-color: #52c41a;
+  border-color: #52c41a;
+}
+
+/* Progress bar styling */
+.quiz-header .ant-progress-bg {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+  .quiz-container {
+    flex-direction: column;
+  }
+  
+  .quiz-sidebar {
+    min-width: 100%;
+    position: static;
+  }
+  
+  .quiz-sidebar .ant-steps {
+    display: flex;
+    overflow-x: auto;
+  }
+  
+  .quiz-sidebar .ant-steps-item {
+    flex: 1;
+    min-width: 120px;
+  }
+  
+  .skin-quiz {
+    padding: 16px;
+  }
+}
+
+/* Animation for step transitions */
+.step-card {
+  transition: all 0.3s ease;
+}
+
+.step-card:hover {
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
+}
+
+/* Results Step Styles */
+.results-step {
+  padding: 24px;
+}
+
+.results-step .step-header {
+  margin-bottom: 32px;
+  padding-bottom: 24px;
+  border-bottom: 2px solid #f0f0f0;
+}
+
+.results-step .ant-tabs {
+  margin-bottom: 32px;
+}
+
+.results-step .ant-tabs-tab {
+  font-size: 16px;
+  font-weight: 500;
+  padding: 12px 24px;
+}
+
+.results-step .ant-tabs-content-holder {
+  padding-top: 24px;
+}
+
+/* Product cards */
+.results-step .ant-card {
+  transition: all 0.3s ease;
+}
+
+.results-step .ant-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
+}
+
+/* Progress indicators */
+.results-step .ant-progress-line {
+  margin-bottom: 8px;
+}
+
+.results-step .ant-badge-status-text {
+  margin-left: 8px;
+  font-size: 14px;
+}
+
+/* Timeline styles */
+.results-step .ant-timeline-item-content {
+  margin-left: 16px;
+}
+
+.results-step .ant-timeline .ant-timeline-item-last .ant-timeline-item-tail {
+  display: none;
+}
+
+/* Statistic cards */
+.results-step .ant-statistic {
+  text-align: center;
+}
+
+.results-step .ant-statistic .ant-statistic-title {
+  font-size: 14px;
+  font-weight: 500;
+  color: #8c8c8c;
+  margin-bottom: 4px;
+}
+
+.results-step .ant-statistic .ant-statistic-content {
+  font-size: 20px;
+  font-weight: 600;
+}
+
+/* Tag styling */
+.results-step .ant-tag {
+  border-radius: 6px;
+  font-size: 12px;
+  font-weight: 500;
+  padding: 2px 8px;
+}
+
+/* List items */
+.results-step .ant-list-item {
+  padding: 16px;
+  border-radius: 8px;
+  transition: background-color 0.3s ease;
+}
+
+.results-step .ant-list-item:hover {
+  background-color: #fafafa;
+}
+
+/* Alert styles */
+.results-step .ant-alert {
+  border-radius: 8px;
+  margin-bottom: 16px;
+}
+
+.results-step .ant-alert-info {
+  background-color: #f8f9ff;
+  border-color: #e6f2ff;
+}
+
+.results-step .ant-alert-success {
+  background-color: #f6ffed;
+  border-color: #d9f7be;
+}
+
+/* Button styling */
+.results-step .ant-btn {
+  border-radius: 6px;
+  font-weight: 500;
+  transition: all 0.3s ease;
+}
+
+.results-step .ant-btn-primary {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  border: none;
+}
+
+.results-step .ant-btn-primary:hover {
+  background: linear-gradient(135deg, #5a6fd8 0%, #6a4190 100%);
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(102, 126, 234, 0.4);
+}
+
+/* Image styling */
+.results-step .ant-image {
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+/* Responsive adjustments for results */
+@media (max-width: 768px) {
+  .results-step {
+    padding: 16px;
+  }
+  
+  .results-step .step-header {
+    margin-bottom: 24px;
+    padding-bottom: 16px;
+  }
+  
+  .results-step .ant-tabs-tab {
+    font-size: 14px;
+    padding: 8px 16px;
+  }
+  
+  .results-step .ant-statistic .ant-statistic-content {
+    font-size: 18px;
+  }
+  
+  .results-step .ant-card {
+    margin-bottom: 12px;
+  }
+}
+
+/* Custom gradient backgrounds */
+.results-gradient-primary {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+}
+
+.results-gradient-success {
+  background: linear-gradient(135deg, #52c41a 0%, #389e0d 100%);
+  color: white;
+}
+
+.results-gradient-warning {
+  background: linear-gradient(135deg, #faad14 0%, #d48806 100%);
+  color: white;
+}

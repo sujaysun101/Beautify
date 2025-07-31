@@ -1,0 +1,49 @@
+.stats {
+  padding: 100px 0;
+  background: linear-gradient(135deg, #e0f7fa 0%, #fce4ec 50%, #f3e5f5 100%);
+  text-align: center;
+}
+
+.stats-content {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 24px;
+}
+
+.stat-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.stat-number {
+  font-size: 3.5rem !important;
+  font-weight: 700 !important;
+  margin-bottom: 16px !important;
+  background: linear-gradient(135deg, #2196f3 0%, #e91e63 50%, #9c27b0 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.stat-label {
+  font-size: 1rem !important;
+  color: #555 !important;
+  max-width: 200px;
+  margin: 0 auto !important;
+  line-height: 1.4 !important;
+}
+
+@media (max-width: 768px) {
+  .stats {
+    padding: 70px 0;
+  }
+  
+  .stat-number {
+    font-size: 2.5rem !important;
+  }
+  
+  .stat-label {
+    font-size: 0.9rem !important;
+  }
+}

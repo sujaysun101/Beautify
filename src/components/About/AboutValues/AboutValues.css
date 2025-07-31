@@ -1,0 +1,76 @@
+.about-values {
+  padding: 100px 0;
+  background: #f8f9fa;
+}
+
+.about-values-content {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 24px;
+}
+
+.values-title {
+  font-size: 2.5rem !important;
+  font-weight: 700 !important;
+  color: #1a1a1a !important;
+  margin-bottom: 24px !important;
+}
+
+.values-description {
+  font-size: 1.1rem !important;
+  color: #666 !important;
+  margin-bottom: 32px !important;
+  line-height: 1.6 !important;
+}
+
+.values-image-placeholder {
+  width: 100%;
+  height: 400px;
+  background: #fff;
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #888;
+  font-size: 1.2rem;
+  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.1);
+  border: 1px dashed #ddd;
+}
+
+.values-list {
+  display: grid;
+  gap: 16px;
+}
+
+.value-item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.value-icon {
+  color: #1890ff;
+  font-size: 1.2rem;
+  flex-shrink: 0;
+}
+
+.value-text {
+  color: #333;
+  font-size: 1rem;
+  line-height: 1.5;
+}
+
+@media (max-width: 768px) {
+  .about-values {
+    padding: 70px 0;
+  }
+  
+  .values-title {
+    font-size: 2rem !important;
+  }
+  
+  .values-image-placeholder {
+    height: 250px;
+    margin-bottom: 20px;
+  }
+}
