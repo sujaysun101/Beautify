@@ -6,86 +6,77 @@ import './Testimonials.css';
 const { Title, Paragraph } = Typography;
 
 const Testimonials = () => {
-  // Create logo data
   const logos = [
-    { id: 'all', name: 'All Testimonials' },
-    { id: 'company1', name: 'Company One' },
-    { id: 'company2', name: 'Company Two' },
-    { id: 'company3', name: 'Company Three' }
+    { id: 'all', name: 'All Stories' },
+    { id: 'company1', name: 'Operators' },
+    { id: 'company2', name: 'Clinicians' },
+    { id: 'company3', name: 'Consumers' }
   ];
 
-  // Add company ID to testimonials
   const allTestimonials = [
     {
-      name: 'Lorem Ipsum',
-      role: 'CEO, Company',
-      content: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
+      name: 'Maya Chen',
+      role: 'Product operator',
+      content: 'The flow makes skincare feel legible. Instead of generic tips, Beautify gives me a clear routine and the reasoning behind it.',
       rating: 5,
       companyId: 'company1'
     },
     {
-      name: 'Dolor Sit',
-      role: 'Manager, Business',
-      content: 'Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.',
+      name: 'Dr. Alicia Romero',
+      role: 'Aesthetic clinic advisor',
+      content: 'What stands out is the structure. The intake captures the information I would want before discussing routine changes with a patient.',
       rating: 5,
       companyId: 'company2'
     },
     {
-      name: 'Consectetur',
-      role: 'Director, Enterprise',
-      content: 'Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.',
+      name: 'Jordan Bell',
+      role: 'Skincare enthusiast',
+      content: 'I finally have a dashboard that feels like it remembers what my skin was dealing with last month and what I should do now.',
       rating: 5,
       companyId: 'company3'
     },
     {
-      name: 'Adipiscing Elit',
-      role: 'CTO, Startup',
-      content: 'Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.',
+      name: 'Rina Patel',
+      role: 'Growth lead',
+      content: 'Beautify turns a high-friction consultation into a guided experience that still feels personal and premium.',
       rating: 4,
       companyId: 'company1'
     },
     {
-      name: 'Tempor Incididunt',
-      role: 'Product Lead, Agency',
-      content: 'Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium.',
+      name: 'Sam Ortega',
+      role: 'Independent esthetician',
+      content: 'The recommendations are framed as next steps, not magic promises. That makes the product feel more trustworthy.',
       rating: 5,
       companyId: 'company2'
     }
   ];
 
-  // State to track which logo is selected
   const [selectedLogo, setSelectedLogo] = useState('all');
 
-  // Filter testimonials based on selected logo
-  const testimonials = selectedLogo === 'all' 
-    ? allTestimonials 
-    : allTestimonials.filter(t => t.companyId === selectedLogo);
-
-  // Handle logo click
-  const handleLogoClick = (logoId) => {
-    setSelectedLogo(logoId);
-  };
+  const testimonials = selectedLogo === 'all'
+    ? allTestimonials
+    : allTestimonials.filter((testimonial) => testimonial.companyId === selectedLogo);
 
   return (
     <section className="testimonials">
       <div className="testimonials-content">
         <div className="testimonials-header">
           <Title level={2} className="testimonials-title">
-            Lorem ipsum dolor sit amet
+            Why early users respond to SkinIQ
           </Title>
           <Paragraph className="testimonials-description">
-            Consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+            The strongest feedback is consistent: users want skincare guidance that feels
+            personal, calm, and practical.
           </Paragraph>
         </div>
 
-        {/* Logo Banner */}
         <div className="testimonial-logos-container">
           <Row gutter={[24, 24]} justify="center" className="testimonial-logos">
             {logos.map((logo) => (
               <Col key={logo.id}>
-                <div 
+                <div
                   className={`testimonial-logo ${selectedLogo === logo.id ? 'active' : ''}`}
-                  onClick={() => handleLogoClick(logo.id)}
+                  onClick={() => setSelectedLogo(logo.id)}
                 >
                   <div className="logo-placeholder">
                     <span>{logo.name}</span>
@@ -96,7 +87,6 @@ const Testimonials = () => {
           </Row>
         </div>
 
-        {/* Testimonials Grid */}
         <Row gutter={[32, 32]} className="testimonials-grid">
           {testimonials.map((testimonial, index) => (
             <Col xs={24} md={8} key={index}>
@@ -111,7 +101,7 @@ const Testimonials = () => {
                 </Paragraph>
                 <div className="testimonial-author">
                   <Avatar size={48} className="author-avatar">
-                    {testimonial.name.split(' ').map(n => n[0]).join('')}
+                    {testimonial.name.split(' ').map((name) => name[0]).join('')}
                   </Avatar>
                   <div className="author-info">
                     <div className="author-name">{testimonial.name}</div>

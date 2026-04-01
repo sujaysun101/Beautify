@@ -10,17 +10,17 @@ const AboutMission = () => {
     {
       icon: <BulbOutlined />,
       title: 'Our Mission',
-      description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation.'
+      description: 'Make high-quality skincare guidance easier to access by turning expert-style intake and routine planning into a clear digital experience.'
     },
     {
       icon: <HeartOutlined />,
       title: 'Our Vision',
-      description: 'Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate.'
+      description: 'Create a product that feels as thoughtful as a great consultation while still being fast, repeatable, and available whenever users need it.'
     },
     {
       icon: <RocketOutlined />,
       title: 'Our Goals',
-      description: 'Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident.'
+      description: 'Launch an MVP that users can trust today, then expand it into a richer loop for progress tracking, recommendation learning, and long-term retention.'
     }
   ];
 
@@ -29,13 +29,14 @@ const AboutMission = () => {
       <div className="about-mission-content">
         <div className="mission-header">
           <Title level={2} className="mission-title">
-            Lorem ipsum dolor sit amet
+            Why Beautify exists
           </Title>
           <Paragraph className="mission-description">
-            Consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+            We are building around a simple belief: skincare tools should reduce anxiety,
+            not create more of it.
           </Paragraph>
         </div>
-        
+
         <Row gutter={[32, 32]} className="mission-grid">
           {missions.map((mission, index) => (
             <Col xs={24} md={8} key={index}>

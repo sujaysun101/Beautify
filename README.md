@@ -1,12 +1,52 @@
-# React + Vite
+# Beautify
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Beautify is a React + Vite skincare product experience centered on `SkinIQ`, a guided assessment flow that helps users capture skin context, upload photos, review recommendations, and return to a personalized dashboard.
 
-Currently, two official plugins are available:
+## What is in the repo
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- Public marketing pages for the Beautify product story
+- Auth flows backed by Supabase
+- Protected dashboard and SkinIQ assessment routes
+- Supabase schema for quiz sessions, results, progress, products, and feedback
 
-## Expanding the ESLint configuration
+## Local setup
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+1. Install dependencies:
+
+```bash
+npm install
+```
+
+2. Create a local env file from the example and provide real Supabase values:
+
+```bash
+cp .env.example .env
+```
+
+Required variables:
+
+- `VITE_SUPABASE_URL`
+- `VITE_SUPABASE_ANON_KEY`
+
+3. Start the app:
+
+```bash
+npm run dev
+```
+
+## Quality checks
+
+```bash
+npm run lint
+npm run build
+```
+
+## Deploying to Vercel
+
+This app is configured as a Vite SPA. For production deploys:
+
+1. Create or link the Vercel project to this GitHub repo.
+2. Add `VITE_SUPABASE_URL` and `VITE_SUPABASE_ANON_KEY` in the Vercel project settings.
+3. Deploy from the connected repository.
+
+`vercel.json` includes an SPA rewrite so client-side routes like `/dashboard` and `/skin-quiz` work on refresh.

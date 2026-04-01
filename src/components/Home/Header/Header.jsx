@@ -11,16 +11,15 @@ const Header = () => {
   const location = useLocation();
   const navigate = useNavigate();
   const { isAuthenticated, user, logout } = useAuth();
-  
+
   const menuItems = [
     { key: 'home', label: <Link to="/">Home</Link> },
     { key: 'product', label: <Link to="/product">Product</Link> },
     { key: 'skiniq', label: <Link to="/skin-quiz">SkinIQ</Link> },
     { key: 'about', label: <Link to="/about">About</Link> },
-    { key: 'contact', label: <a href="#contact">Contact</a> },
+    { key: 'contact', label: <a href="mailto:hello@beautify.skin">Contact</a> },
   ];
 
-  // Determine active menu item based on current path
   const getSelectedKey = () => {
     if (location.pathname === '/') return ['home'];
     if (location.pathname === '/product') return ['product'];
@@ -42,7 +41,6 @@ const Header = () => {
     navigate('/');
   };
 
-  // User dropdown menu items
   const userMenuItems = [
     {
       key: 'dashboard',
@@ -58,7 +56,6 @@ const Header = () => {
     }
   ];
 
-  // Get user display name (from Supabase user metadata or email)
   const getUserDisplayName = () => {
     if (user?.user_metadata?.full_name) {
       return user.user_metadata.full_name.split(' ')[0];
@@ -77,7 +74,7 @@ const Header = () => {
       <div className="header-content">
         <div className="logo">
           <Link to="/">
-            <h2>SkinCare</h2>
+            <h2>Beautify</h2>
           </Link>
         </div>
         <Menu

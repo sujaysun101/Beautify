@@ -7,12 +7,12 @@ const { Title, Paragraph } = Typography;
 
 const AboutValues = () => {
   const values = [
-    'Lorem ipsum dolor sit amet consectetur',
-    'Consectetur adipiscing elit sed do',
-    'Eiusmod tempor incididunt ut labore',
-    'Dolore magna aliqua ut enim ad',
-    'Minim veniam quis nostrud exercitation',
-    'Ullamco laboris nisi ut aliquip'
+    'Recommendations should be understandable, not mystical',
+    'User consent and context come before any routine advice',
+    'Great products help people build confidence gradually',
+    'Clinical sensitivity matters even when the interface feels modern',
+    'Progress beats perfection in skincare behavior change',
+    'The system should get more useful with every follow-up'
   ];
 
   return (
@@ -22,21 +22,21 @@ const AboutValues = () => {
           <Col xs={24} lg={12}>
             <div className="values-image">
               <div className="values-image-placeholder">
-                <span>Our Values Image</span>
+                <span>Clarity, trust, and consistency shape every product decision</span>
               </div>
             </div>
           </Col>
           <Col xs={24} lg={12}>
             <div className="values-text">
               <Title level={2} className="values-title">
-                Lorem ipsum dolor sit amet
+                The principles behind the product
               </Title>
               <Paragraph className="values-description">
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor 
-                incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud 
-                exercitation ullamco laboris.
+                Beautify is being shaped like a trusted skincare guide: structured enough to
+                be reliable, gentle enough to feel approachable, and practical enough to be used
+                again after the first result page.
               </Paragraph>
-              
+
               <div className="values-list">
                 {values.map((value, index) => (
                   <div key={index} className="value-item">

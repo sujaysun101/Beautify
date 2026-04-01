@@ -1,6 +1,7 @@
 import React from 'react';
 import { Row, Col, Typography, Button } from 'antd';
 import { ArrowRightOutlined } from '@ant-design/icons';
+import { Link } from 'react-router-dom';
 import './ProductHero.css';
 
 const { Title, Paragraph } = Typography;
@@ -13,20 +14,24 @@ const ProductHero = () => {
           <Col xs={24} lg={12}>
             <div className="product-hero-text">
               <Title level={1} className="product-hero-title">
-                Lorem ipsum dolor sit amet consectetur
+                The operating layer for personalized skincare guidance
               </Title>
               <Paragraph className="product-hero-description">
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation.
+                Beautify gives teams a structured front door for skin assessments, recommendation
+                generation, and progress tracking, without forcing users through a confusing
+                checkout-first experience.
               </Paragraph>
-              <Button type="primary" size="large" className="product-hero-button">
-                Schedule Demo <ArrowRightOutlined />
-              </Button>
+              <Link to="/register">
+                <Button type="primary" size="large" className="product-hero-button">
+                  Launch SkinIQ <ArrowRightOutlined />
+                </Button>
+              </Link>
             </div>
           </Col>
           <Col xs={24} lg={12}>
             <div className="product-hero-image">
               <div className="product-image-placeholder">
-                <span>Product Dashboard Image</span>
+                <span>Assessment pipeline, recommendations, and follow-up in one workspace</span>
               </div>
             </div>
           </Col>

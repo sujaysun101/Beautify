@@ -7,12 +7,12 @@ const { Title, Paragraph } = Typography;
 
 const ProductPlatform = () => {
   const platformFeatures = [
-    'Lorem ipsum dolor sit amet, consectetur adipiscing',
-    'Ut enim ad minim veniam, quis nostrud exercitation',
-    'Duis aute irure dolor in reprehenderit in voluptate',
-    'Excepteur sint occaecat cupidatat non proident',
-    'Sed ut perspiciatis unde omnis iste natus error',
-    'Nemo enim ipsam voluptatem quia voluptas sit'
+    'Protected auth and account-aware dashboard access',
+    'SkinIQ session storage with progress persistence',
+    'Dedicated results records for recommendation output',
+    'Product catalog and recommendation feedback tables',
+    'Progress tracking ready for repeat check-ins',
+    'Supabase-backed access control with row-level policies'
   ];
 
   return (
@@ -20,35 +20,34 @@ const ProductPlatform = () => {
       <div className="product-platform-content">
         <div className="platform-header">
           <Title level={2} className="platform-title">
-            Lorem ipsum dolor sit amet
+            Built on a platform that can grow with the product
           </Title>
           <Paragraph className="platform-description">
-            Consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. 
-            Ut enim ad minim veniam, quis nostrud exercitation.
+            The MVP already has the right primitives for repeatable skincare guidance, which
+            means future AI, clinician, or commerce layers can be added without rebuilding the core.
           </Paragraph>
         </div>
-        
+
         <Row gutter={[48, 48]} align="middle">
           <Col xs={24} lg={12} className="platform-image-col">
             <div className="platform-image-placeholder">
-              <span>Platform Architecture</span>
+              <span>Auth, SkinIQ sessions, results, progress, and product intelligence</span>
             </div>
           </Col>
           <Col xs={24} lg={12}>
             <div className="platform-features">
               <Title level={3} className="features-title">
-                Consectetur adipiscing elit
+                Ready for launch, ready for iteration
               </Title>
               <Paragraph className="features-description">
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt 
-                ut labore et dolore magna aliqua.
+                This release keeps the architecture simple, but it does not paint the product into a corner.
               </Paragraph>
-              
+
               <List
                 itemLayout="horizontal"
                 dataSource={platformFeatures}
                 className="features-list"
-                renderItem={item => (
+                renderItem={(item) => (
                   <List.Item className="feature-item">
                     <CheckCircleFilled className="feature-icon" />
                     <div className="feature-text">{item}</div>

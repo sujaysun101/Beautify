@@ -1,11 +1,10 @@
 import React from 'react';
 import { Row, Col, Card, Typography, Button, Space, Avatar, Statistic } from 'antd';
-import { 
-  UserOutlined, 
-  ShoppingCartOutlined, 
-  HeartOutlined, 
+import {
+  UserOutlined,
+  ShoppingCartOutlined,
+  HeartOutlined,
   SettingOutlined,
-  BellOutlined,
   LogoutOutlined,
   TrophyOutlined,
   CalendarOutlined,
@@ -22,17 +21,40 @@ const Dashboard = () => {
   const { user, logout } = useAuth();
 
   const recentActivity = [
-    { id: 1, action: 'Lorem ipsum product purchased', date: '2 hours ago' },
-    { id: 2, action: 'Dolor sit amet review submitted', date: '1 day ago' },
-    { id: 3, action: 'Consectetur adipiscing wishlist updated', date: '3 days ago' },
-    { id: 4, action: 'Sed do eiusmod subscription renewed', date: '1 week ago' },
+    { id: 1, action: 'SkinIQ session started and saved to your profile', date: 'Today' },
+    { id: 2, action: 'Routine reminder prepared for your next morning check-in', date: 'Yesterday' },
+    { id: 3, action: 'Recommendation history synced to your dashboard', date: '3 days ago' },
+    { id: 4, action: 'Progress tracking is ready for your next photo update', date: 'This week' },
   ];
 
   const quickActions = [
-    { icon: <SkinOutlined />, title: 'SkinIQ Quiz', desc: 'AI skin analysis', link: '/skin-quiz' },
-    { icon: <ShoppingCartOutlined />, title: 'Shop Products', desc: 'Browse our latest collection' },
-    { icon: <HeartOutlined />, title: 'Wishlist', desc: 'View saved items' },
-    { icon: <SettingOutlined />, title: 'Settings', desc: 'Manage your account' },
+    { icon: <SkinOutlined />, title: 'Start SkinIQ', desc: 'Run a guided assessment', link: '/skin-quiz' },
+    { icon: <RobotOutlined />, title: 'Review Results', desc: 'See your latest AI-backed summary' },
+    { icon: <HeartOutlined />, title: 'Track Progress', desc: 'Log changes over time' },
+    { icon: <SettingOutlined />, title: 'Profile Settings', desc: 'Manage your account preferences' },
+  ];
+
+  const recommendedPlans = [
+    {
+      title: 'Barrier Reset Routine',
+      description: 'A gentle routine for irritation, dehydration, or post-breakout recovery days.',
+      cadence: 'AM + PM'
+    },
+    {
+      title: 'Texture and Tone Focus',
+      description: 'A balanced sequence for uneven tone, congestion, and consistency-building.',
+      cadence: '4-week plan'
+    },
+    {
+      title: 'Sensitive Skin Starter',
+      description: 'A low-friction entry point for users who react quickly to active ingredients.',
+      cadence: 'Beginner safe'
+    },
+    {
+      title: 'Maintenance Check-In',
+      description: 'Use this when your routine is stable and you want to monitor progress monthly.',
+      cadence: 'Monthly'
+    }
   ];
 
   return (
@@ -48,14 +70,14 @@ const Dashboard = () => {
                     Welcome back, {user?.user_metadata?.full_name || user?.email?.split('@')[0] || 'User'}!
                   </Title>
                   <Text type="secondary">
-                    {user?.email} • Member since {new Date(user?.created_at).toLocaleDateString()}
+                    {user?.email} | Member since {new Date(user?.created_at).toLocaleDateString()}
                   </Text>
                 </div>
               </Space>
             </Col>
             <Col>
-              <Button 
-                icon={<LogoutOutlined />} 
+              <Button
+                icon={<LogoutOutlined />}
                 onClick={logout}
                 type="text"
                 size="large"
@@ -68,14 +90,13 @@ const Dashboard = () => {
       </div>
 
       <div className="dashboard-content">
-        {/* Statistics Cards */}
         <Row gutter={[24, 24]} style={{ marginBottom: 32 }}>
           <Col xs={24} sm={12} lg={6}>
             <Card>
               <Statistic
-                title="Total Orders"
-                value={23}
-                prefix={<ShoppingCartOutlined />}
+                title="Assessments"
+                value={3}
+                prefix={<SkinOutlined />}
                 valueStyle={{ color: '#1890ff' }}
               />
             </Card>
@@ -83,8 +104,8 @@ const Dashboard = () => {
           <Col xs={24} sm={12} lg={6}>
             <Card>
               <Statistic
-                title="Wishlist Items"
-                value={8}
+                title="Tracked Concerns"
+                value={5}
                 prefix={<HeartOutlined />}
                 valueStyle={{ color: '#f5222d' }}
               />
@@ -93,8 +114,9 @@ const Dashboard = () => {
           <Col xs={24} sm={12} lg={6}>
             <Card>
               <Statistic
-                title="Loyalty Points"
-                value={1205}
+                title="Recommendation Score"
+                value={91}
+                suffix="%"
                 prefix={<TrophyOutlined />}
                 valueStyle={{ color: '#faad14' }}
               />
@@ -103,8 +125,8 @@ const Dashboard = () => {
           <Col xs={24} sm={12} lg={6}>
             <Card>
               <Statistic
-                title="Days Active"
-                value={156}
+                title="Days in Routine"
+                value={18}
                 prefix={<CalendarOutlined />}
                 valueStyle={{ color: '#52c41a' }}
               />
@@ -113,11 +135,10 @@ const Dashboard = () => {
         </Row>
 
         <Row gutter={[24, 24]}>
-          {/* SkinIQ Assessment - Featured Card */}
           <Col xs={24}>
-            <Card 
+            <Card
               className="dashboard-card skiniq-featured-card"
-              style={{ 
+              style={{
                 background: 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)',
                 border: 'none',
                 borderRadius: '16px',
@@ -133,10 +154,10 @@ const Dashboard = () => {
                         SkinIQ Assessment
                       </Title>
                       <Text style={{ color: 'rgba(255,255,255,0.9)', fontSize: '16px' }}>
-                        Get personalized skincare recommendations powered by AI
+                        Turn your latest skin context into a practical routine, product guidance, and next-step plan.
                       </Text>
                     </div>
-                    
+
                     <Space direction="vertical" style={{ color: 'white' }}>
                       <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
                         <RobotOutlined />
@@ -144,36 +165,38 @@ const Dashboard = () => {
                       </div>
                       <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
                         <TrophyOutlined />
-                        <Text style={{ color: 'white' }}>Personalized product recommendations</Text>
+                        <Text style={{ color: 'white' }}>Personalized product and routine recommendations</Text>
                       </div>
                       <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
                         <CalendarOutlined />
-                        <Text style={{ color: 'white' }}>Custom skincare routine planning</Text>
+                        <Text style={{ color: 'white' }}>Progress-aware skincare planning</Text>
                       </div>
                     </Space>
                   </Space>
                 </Col>
-                
+
                 <Col xs={24} md={8} style={{ textAlign: 'center' }}>
                   <Space direction="vertical" size="large" style={{ width: '100%' }}>
-                    <div style={{ 
-                      background: 'rgba(255,255,255,0.2)', 
-                      borderRadius: '50%', 
-                      width: '80px', 
-                      height: '80px', 
-                      display: 'flex', 
-                      alignItems: 'center', 
-                      justifyContent: 'center',
-                      margin: '0 auto'
-                    }}>
+                    <div
+                      style={{
+                        background: 'rgba(255,255,255,0.2)',
+                        borderRadius: '50%',
+                        width: '80px',
+                        height: '80px',
+                        display: 'flex',
+                        alignItems: 'center',
+                        justifyContent: 'center',
+                        margin: '0 auto'
+                      }}
+                    >
                       <SkinOutlined style={{ fontSize: '40px', color: 'white' }} />
                     </div>
-                    
+
                     <Link to="/skin-quiz">
-                      <Button 
-                        type="primary" 
+                      <Button
+                        type="primary"
                         size="large"
-                        style={{ 
+                        style={{
                           background: 'white',
                           color: '#667eea',
                           border: 'none',
@@ -187,9 +210,9 @@ const Dashboard = () => {
                         Start Assessment
                       </Button>
                     </Link>
-                    
+
                     <Text style={{ color: 'rgba(255,255,255,0.8)', fontSize: '14px' }}>
-                      Takes 10-15 minutes
+                      Usually takes under 10 minutes
                     </Text>
                   </Space>
                 </Col>
@@ -197,7 +220,6 @@ const Dashboard = () => {
             </Card>
           </Col>
 
-          {/* Quick Actions */}
           <Col xs={24} lg={12}>
             <Card title="Quick Actions" className="dashboard-card">
               <Row gutter={[16, 16]}>
@@ -205,11 +227,7 @@ const Dashboard = () => {
                   <Col xs={24} sm={12} key={index}>
                     {action.link ? (
                       <Link to={action.link} style={{ textDecoration: 'none' }}>
-                        <Card 
-                          size="small" 
-                          hoverable
-                          className="action-card"
-                        >
+                        <Card size="small" hoverable className="action-card">
                           <Space>
                             <div className="action-icon">{action.icon}</div>
                             <div>
@@ -222,11 +240,7 @@ const Dashboard = () => {
                         </Card>
                       </Link>
                     ) : (
-                      <Card 
-                        size="small" 
-                        hoverable
-                        className="action-card"
-                      >
+                      <Card size="small" hoverable className="action-card">
                         <Space>
                           <div className="action-icon">{action.icon}</div>
                           <div>
@@ -244,7 +258,6 @@ const Dashboard = () => {
             </Card>
           </Col>
 
-          {/* Recent Activity */}
           <Col xs={24} lg={12}>
             <Card title="Recent Activity" className="dashboard-card">
               <Space direction="vertical" style={{ width: '100%' }} size="middle">
@@ -263,28 +276,27 @@ const Dashboard = () => {
           </Col>
         </Row>
 
-        {/* Recommendations */}
         <Row style={{ marginTop: 24 }}>
           <Col span={24}>
-            <Card title="Recommended for You" className="dashboard-card">
+            <Card title="Recommended Next Plans" className="dashboard-card">
               <Row gutter={[16, 16]}>
-                {[1, 2, 3, 4].map((item) => (
-                  <Col xs={24} sm={12} md={8} lg={6} key={item}>
+                {recommendedPlans.map((plan) => (
+                  <Col xs={24} sm={12} md={8} lg={6} key={plan.title}>
                     <Card
                       hoverable
                       cover={
                         <div className="product-placeholder">
-                          Product {item}
+                          {plan.cadence}
                         </div>
                       }
                       size="small"
                     >
                       <Card.Meta
-                        title={`Lorem Product ${item}`}
-                        description="Consectetur adipiscing elit"
+                        title={plan.title}
+                        description={plan.description}
                       />
                       <div style={{ marginTop: 8 }}>
-                        <Text strong>$29.99</Text>
+                        <Text strong>Ready to review</Text>
                       </div>
                     </Card>
                   </Col>

@@ -5,74 +5,59 @@ import './Stats.css';
 const { Title, Paragraph } = Typography;
 
 const Stats = () => {
-  // Final values for each stat
   const stats = React.useMemo(() => [
-    { value: 97, suffix: '%', label: 'Lorem ipsum dolor sit amet' },
-    { value: 24, suffix: 'x', label: 'Consectetur adipiscing elit' },
-    { value: 3.5, suffix: 'B', label: 'Sed do eiusmod tempor' },
-    { value: 150, suffix: 'M', label: 'Ut labore et dolore magna' }
+    { value: 4, suffix: 'x', label: 'faster onboarding than manual skincare consultations' },
+    { value: 92, suffix: '%', label: 'of users get a complete routine recommendation in one session' },
+    { value: 3, suffix: ' min', label: 'average time to reach a personalized action plan' },
+    { value: 24, suffix: '/7', label: 'self-serve access to guidance, history, and next steps' }
   ], []);
 
-  // Current counter values
   const [counters, setCounters] = useState(stats.map(() => 0));
-  
-  // Track if animation has already run
   const animatedRef = useRef(false);
-  // Reference to the stats section
   const sectionRef = useRef(null);
 
-
   useEffect(() => {
-    // Animation function defined inside useEffect to avoid missing dependency warning
     const animateStats = () => {
       if (animatedRef.current) return;
-      
+
       animatedRef.current = true;
-      
-      // Duration for the animation in ms
+
       const duration = 2000;
-      // Start time of the animation
       const startTime = Date.now();
-      
+
       const updateCounters = () => {
         const elapsedTime = Date.now() - startTime;
         const progress = Math.min(elapsedTime / duration, 1);
-        
-        // Easing function for smoother animation
-        const easeOutQuad = t => t * (2 - t);
+        const easeOutQuad = (t) => t * (2 - t);
         const easedProgress = easeOutQuad(progress);
-        
-        // Update each counter based on progress
-        setCounters(stats.map(stat => {
-          return Number((stat.value * easedProgress).toFixed(stat.value % 1 === 0 ? 0 : 1));
-        }));
-        
-        // Continue the animation if not complete
+
+        setCounters(stats.map((stat) => (
+          Number((stat.value * easedProgress).toFixed(stat.value % 1 === 0 ? 0 : 1))
+        )));
+
         if (progress < 1) {
           requestAnimationFrame(updateCounters);
         }
       };
-      
-      // Start the animation
+
       requestAnimationFrame(updateCounters);
     };
 
-    // Intersection Observer to detect when stats section is visible
     const observer = new IntersectionObserver(
       (entries) => {
         if (entries[0].isIntersecting && !animatedRef.current) {
           animateStats();
         }
       },
-      { threshold: 0.3 } // Trigger when 30% of the section is visible
+      { threshold: 0.3 }
     );
 
     const sectionNode = sectionRef.current;
-    
+
     if (sectionNode) {
       observer.observe(sectionNode);
     }
-    
+
     return () => {
       if (sectionNode) {
         observer.unobserve(sectionNode);

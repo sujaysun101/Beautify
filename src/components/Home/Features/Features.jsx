@@ -1,10 +1,10 @@
 import React from 'react';
 import { Row, Col, Card, Typography } from 'antd';
-import { 
-  RocketOutlined, 
-  SafetyOutlined, 
+import {
+  RocketOutlined,
+  SafetyOutlined,
   ThunderboltOutlined,
-  HeartOutlined 
+  HeartOutlined
 } from '@ant-design/icons';
 import './Features.css';
 
@@ -14,23 +14,23 @@ const Features = () => {
   const features = [
     {
       icon: <RocketOutlined />,
-      title: 'Lorem Ipsum',
-      description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore.'
+      title: 'Guided intake',
+      description: 'Collect the right details up front with a structured quiz that captures concerns, routines, lifestyle signals, and consent.'
     },
     {
       icon: <SafetyOutlined />,
-      title: 'Dolor Sit Amet',
-      description: 'Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo.'
+      title: 'Safer recommendations',
+      description: 'Keep recommendations grounded in skin history, allergies, sensitivities, and product tolerance before suggesting a next step.'
     },
     {
       icon: <ThunderboltOutlined />,
-      title: 'Consectetur',
-      description: 'Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla.'
+      title: 'Faster decisions',
+      description: 'Turn intake data into a clear summary, routine guidance, and product direction without forcing users to decode skincare jargon.'
     },
     {
       icon: <HeartOutlined />,
-      title: 'Adipiscing',
-      description: 'Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim.'
+      title: 'Progress-focused care',
+      description: 'Anchor the experience around repeat assessments, habit tracking, and confidence-building instead of one-off recommendations.'
     }
   ];
 
@@ -39,11 +39,11 @@ const Features = () => {
       <div className="features-content">
         <div className="features-header">
           <Title level={2} className="features-title">
-            Lorem ipsum dolor sit amet
+            Built for more than a product quiz
           </Title>
           <Paragraph className="features-description">
-            Consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. 
-            Ut enim ad minim veniam, quis nostrud exercitation.
+            Beautify is designed to feel like an intelligent skincare concierge: structured,
+            personal, and practical from the first visit to the next check-in.
           </Paragraph>
         </div>
         <Row gutter={[32, 32]} className="features-grid">

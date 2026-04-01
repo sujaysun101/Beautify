@@ -8,30 +8,30 @@ const { Title, Paragraph } = Typography;
 const AboutStats = () => {
   const stats = [
     {
-      title: 'Happy Customers',
-      value: 50000,
-      suffix: '+',
+      title: 'Core workflows',
+      value: 7,
+      suffix: '',
       icon: <UserOutlined />,
       color: '#1890ff'
     },
     {
-      title: 'Products Sold',
-      value: 250000,
+      title: 'Database tables',
+      value: 6,
       suffix: '+',
       icon: <ShoppingOutlined />,
       color: '#52c41a'
     },
     {
-      title: 'Five Star Reviews',
-      value: 98,
-      suffix: '%',
+      title: 'Protected app routes',
+      value: 2,
+      suffix: '',
       icon: <HeartOutlined />,
       color: '#f5222d'
     },
     {
-      title: 'Years Experience',
-      value: 15,
-      suffix: '+',
+      title: 'Ship-ready goal',
+      value: 1,
+      suffix: ' MVP',
       icon: <TrophyOutlined />,
       color: '#faad14'
     }
@@ -42,13 +42,14 @@ const AboutStats = () => {
       <div className="about-stats-content">
         <div className="stats-header">
           <Title level={2} className="stats-title">
-            Lorem ipsum dolor sit amet
+            A small product with real operating depth
           </Title>
           <Paragraph className="stats-description">
-            Consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+            The current repo already contains the building blocks for a credible launch, not
+            just a static brochure site.
           </Paragraph>
         </div>
-        
+
         <Row gutter={[32, 32]} className="stats-grid">
           {stats.map((stat, index) => (
             <Col xs={12} sm={6} key={index}>
@@ -60,7 +61,7 @@ const AboutStats = () => {
                   title={stat.title}
                   value={stat.value}
                   suffix={stat.suffix}
-                  valueStyle={{ 
+                  valueStyle={{
                     color: stat.color,
                     fontSize: '2.5rem',
                     fontWeight: 700

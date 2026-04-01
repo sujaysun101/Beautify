@@ -1,10 +1,10 @@
 import React from 'react';
 import { Row, Col, Typography, Card } from 'antd';
-import { 
-  RocketOutlined, 
-  BarChartOutlined, 
+import {
+  RocketOutlined,
+  BarChartOutlined,
   ApiOutlined,
-  BulbOutlined 
+  BulbOutlined
 } from '@ant-design/icons';
 import './ProductFeatures.css';
 
@@ -14,23 +14,23 @@ const ProductFeatures = () => {
   const features = [
     {
       icon: <RocketOutlined />,
-      title: 'Lorem Ipsum',
-      description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.'
+      title: 'Smart intake design',
+      description: 'Collect the exact context needed for confident skincare recommendations, from sensitivity history to current routine friction.'
     },
     {
       icon: <BarChartOutlined />,
-      title: 'Dolor Sit Amet',
-      description: 'Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.'
+      title: 'Actionable summaries',
+      description: 'Convert quiz responses and photo inputs into clear recaps, priorities, and next-step guidance instead of dumping raw answers.'
     },
     {
       icon: <ApiOutlined />,
-      title: 'Consectetur Adipiscing',
-      description: 'Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.'
+      title: 'Connected data model',
+      description: 'Persist sessions, results, products, progress, and feedback so the experience improves over time rather than restarting from zero.'
     },
     {
       icon: <BulbOutlined />,
-      title: 'Sed Do Eiusmod',
-      description: 'Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.'
+      title: 'Guidance users can follow',
+      description: 'Package recommendations into routines, milestones, and follow-up prompts that feel understandable to real customers.'
     }
   ];
 
@@ -39,10 +39,11 @@ const ProductFeatures = () => {
       <div className="product-features-content">
         <div className="product-features-header">
           <Title level={2} className="product-features-title">
-            Lorem ipsum dolor sit amet
+            What Beautify already makes possible
           </Title>
           <Paragraph className="product-features-description">
-            Consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+            The current product foundation is strong; this release sharpens it into a clearer
+            MVP for launch and iteration.
           </Paragraph>
         </div>
         <Row gutter={[32, 32]} className="product-features-grid">

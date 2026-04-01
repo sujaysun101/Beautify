@@ -1,10 +1,10 @@
 import React from 'react';
 import { Row, Col, Typography, Card } from 'antd';
-import { 
-  AreaChartOutlined, 
-  PieChartOutlined, 
+import {
+  AreaChartOutlined,
+  PieChartOutlined,
   LineChartOutlined,
-  BarChartOutlined 
+  BarChartOutlined
 } from '@ant-design/icons';
 import './ProductAnalytics.css';
 
@@ -14,23 +14,23 @@ const ProductAnalytics = () => {
   const analyticsFeatures = [
     {
       icon: <AreaChartOutlined />,
-      title: 'Lorem Ipsum Analytics',
-      description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.'
+      title: 'Completion visibility',
+      description: 'Track where users finish the assessment, where they abandon, and which questions create the most friction.'
     },
     {
       icon: <PieChartOutlined />,
-      title: 'Dolor Sit Amet Metrics',
-      description: 'Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.'
+      title: 'Concern clustering',
+      description: 'Understand which skin concerns show up together so product guidance and onboarding can evolve with real usage.'
     },
     {
       icon: <LineChartOutlined />,
-      title: 'Consectetur Data',
-      description: 'Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.'
+      title: 'Routine adherence signals',
+      description: 'Measure whether recommendations translate into repeat engagement, follow-up activity, and higher-confidence skincare decisions.'
     },
     {
       icon: <BarChartOutlined />,
-      title: 'Adipiscing Insights',
-      description: 'Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.'
+      title: 'Recommendation feedback',
+      description: 'Capture which product suggestions resonate so the next version of Beautify can improve its guidance loop.'
     }
   ];
 
@@ -41,20 +41,23 @@ const ProductAnalytics = () => {
           <Col xs={24} lg={12}>
             <div className="analytics-text">
               <Title level={2} className="analytics-title">
-                Lorem ipsum dolor sit amet
+                Product insight is built into the model
               </Title>
               <Paragraph className="analytics-description">
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+                Beautify is not just a front-end questionnaire. The current schema already
+                supports session history, results, product data, user progress, and recommendation
+                feedback, which gives the product a real foundation for learning over time.
               </Paragraph>
               <Paragraph className="analytics-description">
-                Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident.
+                That means this MVP can ship now while still leaving room for future analytics,
+                clinician workflows, and smarter recommendation loops.
               </Paragraph>
             </div>
           </Col>
           <Col xs={24} lg={12}>
             <div className="analytics-dashboard">
               <div className="analytics-image-placeholder">
-                <span>Analytics Dashboard</span>
+                <span>Session metrics, concern patterns, and recommendation feedback</span>
               </div>
             </div>
           </Col>

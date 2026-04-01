@@ -53,7 +53,7 @@ const Register = () => {
         <Card className="register-card">
           <div className="register-header">
             <Title level={2}>Create Account</Title>
-            <Text type="secondary">Join SkinCare to get started</Text>
+            <Text type="secondary">Join Beautify to get started</Text>
           </div>
 
           <Form

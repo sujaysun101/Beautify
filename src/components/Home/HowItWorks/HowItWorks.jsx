@@ -5,25 +5,23 @@ import './HowItWorks.css';
 const { Title, Paragraph } = Typography;
 
 const HowItWorks = () => {
-  // Track which tab is active
   const [activeTab, setActiveTab] = useState(1);
 
-  // Content for each tab
   const steps = [
     {
       id: 1,
-      title: 'Lorem ipsum dolor sit amet',
-      content: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation.'
+      title: 'Capture the full skin story',
+      content: 'Users answer guided questions about concerns, medical context, lifestyle, and routine so SkinIQ has enough context to avoid generic advice.'
     },
     {
       id: 2,
-      title: 'Consectetur adipiscing elit',
-      content: 'Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse.'
+      title: 'Analyze photos with context',
+      content: 'Photo uploads are paired with the intake session, making it easier to summarize visible patterns, note risk factors, and keep the review grounded.'
     },
     {
       id: 3,
-      title: 'Sed do eiusmod tempor',
-      content: 'Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa.'
+      title: 'Recommend the next routine',
+      content: 'Beautify translates the session into recommendations, a morning and evening plan, and a repeatable follow-up loop inside the customer dashboard.'
     }
   ];
 
@@ -35,14 +33,15 @@ const HowItWorks = () => {
             How It Works
           </Title>
           <Paragraph className="how-it-works-description">
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam.
+            The product flow is intentionally simple: understand the user, assess the skin,
+            and return an actionable routine that feels personalized instead of overwhelming.
           </Paragraph>
         </div>
 
         <Row gutter={[48, 0]} className="how-it-works-container">
           <Col xs={24} md={12} className="tabs-container">
             {steps.map((step) => (
-              <div 
+              <div
                 key={step.id}
                 className={`tab ${activeTab === step.id ? 'active' : ''}`}
                 onClick={() => setActiveTab(step.id)}
@@ -55,11 +54,15 @@ const HowItWorks = () => {
               </div>
             ))}
           </Col>
-          
+
           <Col xs={24} md={12} className="image-container">
             <div className="image-wrapper">
               <div className="placeholder-image">
-                <span>Step {activeTab} Image</span>
+                <span>
+                  {activeTab === 1 && 'Step 1: intake and consent'}
+                  {activeTab === 2 && 'Step 2: photo capture and analysis'}
+                  {activeTab === 3 && 'Step 3: routine plan and follow-up'}
+                </span>
               </div>
             </div>
           </Col>

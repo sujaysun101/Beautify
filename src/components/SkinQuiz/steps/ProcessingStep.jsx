@@ -87,7 +87,7 @@ const ProcessingStep = ({ data, onNext }) => {
           {
             category: 'cleanser',
             product: 'Gentle Foaming Cleanser',
-            brand: 'SkinCare Pro',
+            brand: 'Beautify Lab',
             price: '$24',
             whyRecommended: 'Gentle formula suitable for sensitive skin while effectively removing impurities',
             keyIngredients: ['Ceramides', 'Hyaluronic Acid', 'Niacinamide'],

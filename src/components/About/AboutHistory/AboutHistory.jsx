@@ -8,28 +8,27 @@ const { Title, Paragraph } = Typography;
 const AboutHistory = () => {
   const timelineItems = [
     {
+      year: '2026',
+      title: 'MVP polish and deployment',
+      description: 'Beautify sharpens its public story, hardens deployment, and prepares SkinIQ for broader testing with real users.'
+    },
+    {
+      year: '2025',
+      title: 'SkinIQ experience built',
+      description: 'The multi-step assessment flow, protected routes, dashboard, and Supabase-backed persistence land in the product.'
+    },
+    {
       year: '2024',
-      title: 'Lorem Ipsum Achievement',
-      description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore.'
+      title: 'Data model designed',
+      description: 'Core schema support arrives for quiz sessions, results, products, image metadata, progress tracking, and recommendation feedback.'
     },
     {
       year: '2023',
-      title: 'Dolor Sit Expansion',
-      description: 'Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo.'
-    },
-    {
-      year: '2022',
-      title: 'Consectetur Innovation',
-      description: 'Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla.'
-    },
-    {
-      year: '2020',
-      title: 'Adipiscing Foundation',
-      description: 'Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim.'
+      title: 'Beautify concept forms',
+      description: 'The product direction centers around making skincare guidance more personal, structured, and easier to act on.'
     }
   ];
 
-  // Transform data for new Timeline API
   const timelineData = timelineItems.map((item) => ({
     dot: <CalendarOutlined className="timeline-icon" />,
     label: <span className="timeline-year">{item.year}</span>,
@@ -55,13 +54,12 @@ const AboutHistory = () => {
                 Our Journey
               </Title>
               <Paragraph className="history-description">
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor 
-                incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud 
-                exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+                Beautify is early, but the trajectory is clear: start with a trusted assessment
+                experience, then turn that into a durable skincare guidance platform.
               </Paragraph>
               <Paragraph className="history-description">
-                Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu 
-                fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident.
+                Every phase of the product has moved toward one goal: making next-step skincare
+                decisions feel simpler, safer, and more repeatable.
               </Paragraph>
             </div>
           </Col>

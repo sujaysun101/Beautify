@@ -8,28 +8,28 @@ const { Title, Paragraph } = Typography;
 const AboutTeam = () => {
   const teamMembers = [
     {
-      name: 'Lorem Ipsum',
-      role: 'Chief Executive Officer',
-      description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt.',
-      avatar: 'LI'
+      name: 'Product Strategy',
+      role: 'Vision and category definition',
+      description: 'Shapes how Beautify differentiates from generic skincare content and turns SkinIQ into a focused product wedge.',
+      avatar: 'PS'
     },
     {
-      name: 'Dolor Sit',
-      role: 'Chief Technology Officer',
-      description: 'Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip.',
-      avatar: 'DS'
+      name: 'Clinical Thinking',
+      role: 'Safety and recommendation framing',
+      description: 'Keeps the experience grounded in skin context, sensitivities, and routine realism instead of overconfident claims.',
+      avatar: 'CT'
     },
     {
-      name: 'Consectetur Amet',
-      role: 'Head of Design',
-      description: 'Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat.',
-      avatar: 'CA'
+      name: 'Experience Design',
+      role: 'Flow, trust, and onboarding clarity',
+      description: 'Turns complex skincare questions into a calm interface that feels more like guidance than paperwork.',
+      avatar: 'XD'
     },
     {
-      name: 'Adipiscing Elit',
-      role: 'Head of Marketing',
-      description: 'Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt.',
-      avatar: 'AE'
+      name: 'Data and Growth',
+      role: 'Progress loops and learning systems',
+      description: 'Connects results, dashboard behavior, and recommendation feedback so each release can become more useful than the last.',
+      avatar: 'DG'
     }
   ];
 
@@ -41,11 +41,11 @@ const AboutTeam = () => {
             Meet Our Team
           </Title>
           <Paragraph className="team-description">
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor 
-            incididunt ut labore et dolore magna aliqua.
+            Beautify is being shaped at the intersection of product, clinical thinking,
+            design, and retention-focused systems.
           </Paragraph>
         </div>
-        
+
         <Row gutter={[32, 32]} className="team-grid">
           {teamMembers.map((member, index) => (
             <Col xs={24} sm={12} lg={6} key={index}>

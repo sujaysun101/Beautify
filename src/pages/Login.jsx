@@ -50,7 +50,7 @@ const Login = () => {
         <Card className="login-card">
           <div className="login-header">
             <Title level={2}>Welcome Back</Title>
-            <Text type="secondary">Sign in to your SkinCare account</Text>
+            <Text type="secondary">Sign in to your Beautify account</Text>
           </div>
 
           <Form

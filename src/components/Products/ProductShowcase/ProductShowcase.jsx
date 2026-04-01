@@ -7,28 +7,28 @@ const { TabPane } = Tabs;
 
 const ProductShowcase = () => {
   const [activeKey, setActiveKey] = useState('1');
-  
+
   const tabItems = [
     {
       key: '1',
-      label: 'Lorem Ipsum',
-      title: 'Lorem ipsum dolor sit amet',
-      description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris.',
-      imageLabel: 'Feature 1 Screenshot'
+      label: 'Intake',
+      title: 'Capture the details that actually shape skin decisions',
+      description: 'Beautify guides users through consent, photos, medical context, lifestyle, and skin concerns so recommendations are based on a complete picture.',
+      imageLabel: 'Quiz and consent experience'
     },
     {
       key: '2',
-      label: 'Dolor Sit',
-      title: 'Consectetur adipiscing elit',
-      description: 'Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore.',
-      imageLabel: 'Feature 2 Screenshot'
+      label: 'Analysis',
+      title: 'Translate session data into usable insight',
+      description: 'The results layer turns raw answers into a skin summary, product suggestions, routine recommendations, and progress framing users can understand.',
+      imageLabel: 'Results and recommendation view'
     },
     {
       key: '3',
-      label: 'Consectetur',
-      title: 'Sed do eiusmod tempor',
-      description: 'Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt.',
-      imageLabel: 'Feature 3 Screenshot'
+      label: 'Retention',
+      title: 'Keep the relationship going after the first assessment',
+      description: 'Dashboard surfaces help users return for follow-ups, review recent activity, and start the next SkinIQ session without losing context.',
+      imageLabel: 'Dashboard and follow-up flow'
     }
   ];
 
@@ -37,22 +37,23 @@ const ProductShowcase = () => {
       <div className="product-showcase-content">
         <div className="product-showcase-header">
           <Title level={2} className="product-showcase-title">
-            Lorem ipsum dolor sit amet
+            A flow that feels premium from first click to follow-up
           </Title>
           <Paragraph className="product-showcase-description">
-            Consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+            Each step is focused on reducing uncertainty and helping the user take the next
+            best action with confidence.
           </Paragraph>
         </div>
-        
+
         <div className="product-showcase-tabs">
-          <Tabs 
-            activeKey={activeKey} 
-            onChange={setActiveKey} 
+          <Tabs
+            activeKey={activeKey}
+            onChange={setActiveKey}
             centered
             tabPosition="top"
             className="showcase-tabs"
           >
-            {tabItems.map(item => (
+            {tabItems.map((item) => (
               <TabPane tab={item.label} key={item.key}>
                 <Row gutter={[48, 48]} align="middle" className="showcase-content">
                   <Col xs={24} lg={12} className="showcase-text">

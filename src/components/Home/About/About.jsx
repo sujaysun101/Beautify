@@ -1,6 +1,7 @@
 import React from 'react';
 import { Row, Col, Typography, Button } from 'antd';
 import { ArrowRightOutlined } from '@ant-design/icons';
+import { Link } from 'react-router-dom';
 import './About.css';
 
 const { Title, Paragraph } = Typography;
@@ -13,27 +14,29 @@ const About = () => {
           <Col xs={24} lg={12}>
             <div className="about-image">
               <div className="about-placeholder">
-                <span>About Image</span>
+                <span>Clinical intuition meets product-grade UX</span>
               </div>
             </div>
           </Col>
           <Col xs={24} lg={12}>
             <div className="about-text">
               <Title level={2} className="about-title">
-                Lorem ipsum dolor sit amet consectetur
+                Designed for people who want clarity, not more skincare noise
               </Title>
               <Paragraph className="about-description">
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod 
-                tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, 
-                quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+                Beautify focuses on the gap between curiosity and action. Most skincare
+                experiences stop at education or ecommerce. We are building the layer that
+                turns personal context into a plan users can actually follow.
               </Paragraph>
               <Paragraph className="about-description">
-                Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore 
-                eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident.
+                SkinIQ is the first step in that loop: a guided assessment that helps users
+                understand what matters now and what to do next.
               </Paragraph>
-              <Button type="primary" size="large" icon={<ArrowRightOutlined />}>
-                Learn More
-              </Button>
+              <Link to="/about">
+                <Button type="primary" size="large" icon={<ArrowRightOutlined />}>
+                  Learn More
+                </Button>
+              </Link>
             </div>
           </Col>
         </Row>
