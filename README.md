@@ -49,4 +49,6 @@ This app is configured as a Vite SPA. For production deploys:
 2. Add `VITE_SUPABASE_URL` and `VITE_SUPABASE_ANON_KEY` in the Vercel project settings.
 3. Deploy from the connected repository.
 
+Git-based deployments are now expected to trigger automatically for this repo after pushes to the connected branch.
+
 `vercel.json` includes an SPA rewrite so client-side routes like `/dashboard` and `/skin-quiz` work on refresh.
