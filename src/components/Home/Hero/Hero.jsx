@@ -37,13 +37,11 @@ const Hero = () => {
           </Col>
           <Col xs={24} lg={12}>
             <div className="hero-image">
-              <div className="hero-placeholder">
-                <div>
-                  <strong>SkinIQ Signal Layer</strong>
-                  <br />
-                  Intake, photo review, routine planning, and progress check-ins in one flow.
-                </div>
-              </div>
+              <img
+                className="hero-illustration"
+                src="/illustrations/hero-skiniq.svg"
+                alt="Beautify SkinIQ dashboard illustration showing intake, analysis, and routine planning"
+              />
             </div>
           </Col>
         </Row>

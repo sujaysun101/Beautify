@@ -1,0 +1,33 @@
+<svg width="720" height="520" viewBox="0 0 720 520" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="bg" x1="76" y1="70" x2="631" y2="459" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#F5F8FF"/>
+      <stop offset="1" stop-color="#EEFDF6"/>
+    </linearGradient>
+    <linearGradient id="scan" x1="176" y1="146" x2="312" y2="332" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#7B61FF"/>
+      <stop offset="1" stop-color="#34C8A5"/>
+    </linearGradient>
+  </defs>
+  <rect width="720" height="520" rx="36" fill="url(#bg)"/>
+  <rect x="94" y="84" width="532" height="352" rx="30" fill="white"/>
+  <rect x="128" y="116" width="220" height="288" rx="28" fill="#F7FAFF"/>
+  <circle cx="238" cy="214" r="64" fill="#F6DCC7"/>
+  <path d="M176 293C193 251 235 232 277 241C314 249 340 277 344 316H176V293Z" fill="#B17D6C"/>
+  <path d="M184 198C188 149 220 116 264 116C305 116 341 151 342 196C323 211 291 221 263 221C227 221 196 212 184 198Z" fill="#2F2443"/>
+  <rect x="168" y="146" width="140" height="170" rx="22" stroke="url(#scan)" stroke-width="6"/>
+  <circle cx="200" cy="178" r="7" fill="#7B61FF"/>
+  <circle cx="276" cy="178" r="7" fill="#7B61FF"/>
+  <circle cx="200" cy="284" r="7" fill="#34C8A5"/>
+  <circle cx="276" cy="284" r="7" fill="#34C8A5"/>
+  <rect x="386" y="128" width="208" height="86" rx="24" fill="#F5F8FF"/>
+  <rect x="410" y="156" width="120" height="12" rx="6" fill="#B7C9F6"/>
+  <rect x="410" y="180" width="156" height="12" rx="6" fill="#D0DCF4"/>
+  <rect x="386" y="232" width="208" height="172" rx="24" fill="#101828"/>
+  <polyline points="412,330 450,296 482,314 524,258 566,276" stroke="#60E6B7" stroke-width="8" stroke-linecap="round" stroke-linejoin="round"/>
+  <circle cx="450" cy="296" r="8" fill="#60E6B7"/>
+  <circle cx="482" cy="314" r="8" fill="#60E6B7"/>
+  <circle cx="524" cy="258" r="8" fill="#60E6B7"/>
+  <circle cx="566" cy="276" r="8" fill="#60E6B7"/>
+  <rect x="412" y="246" width="110" height="14" rx="7" fill="#7C89A8"/>
+</svg>

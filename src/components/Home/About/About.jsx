@@ -13,9 +13,11 @@ const About = () => {
         <Row align="middle" gutter={[48, 48]}>
           <Col xs={24} lg={12}>
             <div className="about-image">
-              <div className="about-placeholder">
-                <span>Clinical intuition meets product-grade UX</span>
-              </div>
+              <img
+                className="about-illustration"
+                src="/illustrations/about-guidance.svg"
+                alt="Beautify illustration combining a guided skincare profile with recommendation cards"
+              />
             </div>
           </Col>
           <Col xs={24} lg={12}>
