@@ -9,14 +9,19 @@ if (!supabaseUrl || !supabaseAnonKey) {
   )
 }
 
-export const supabase = createClient(supabaseUrl, supabaseAnonKey)
+export const supabase = createClient(supabaseUrl, supabaseAnonKey, {
+  auth: {
+    flowType: 'pkce',
+    detectSessionInUrl: true
+  }
+})
 
 // Auth configuration
 export const authConfig = {
-  // Configure OAuth providers
   redirectTo: `${window.location.origin}/auth/callback`,
+  emailRedirectTo: `${window.location.origin}/auth/callback?next=/dashboard`,
+  passwordResetRedirectTo: `${window.location.origin}/reset-password`,
   
-  // Provider configurations
   providers: {
     google: {
       scopes: 'email profile'

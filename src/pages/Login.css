@@ -41,6 +41,22 @@
   font-weight: 500;
 }
 
+.test-login-item {
+  margin-bottom: 8px;
+}
+
+.test-login-button {
+  height: 44px;
+  border-radius: 10px;
+}
+
+.test-login-help {
+  display: block;
+  margin-top: 10px;
+  text-align: center;
+  line-height: 1.5;
+}
+
 .social-button {
   height: 44px;
   display: flex;

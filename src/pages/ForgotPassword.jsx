@@ -1,5 +1,5 @@
-import React, { useState } from 'react';
-import { Form, Input, Button, Card, Typography, message, Result } from 'antd';
+import React, { useState, useEffect } from 'react';
+import { Form, Input, Button, Card, Typography, Result, Alert } from 'antd';
 import { MailOutlined, ArrowLeftOutlined } from '@ant-design/icons';
 import { Link } from 'react-router-dom';
 import { useAuth } from '../hooks/useAuth';
@@ -11,7 +11,11 @@ const ForgotPassword = () => {
   const [loading, setLoading] = useState(false);
   const [emailSent, setEmailSent] = useState(false);
   const [email, setEmail] = useState('');
-  const { resetPassword } = useAuth();
+  const { resetPassword, error, clearError } = useAuth();
+
+  useEffect(() => {
+    clearError();
+  }, [clearError]);
 
   const onFinish = async (values) => {
     setLoading(true);
@@ -19,8 +23,8 @@ const ForgotPassword = () => {
       await resetPassword(values.email);
       setEmail(values.email);
       setEmailSent(true);
-    } catch (error) {
-      message.error(error.message || 'Failed to send reset email. Please try again.');
+    } catch {
+      // Inline alert handles the error.
     } finally {
       setLoading(false);
     }
@@ -72,6 +76,15 @@ const ForgotPassword = () => {
               Enter your email address and we'll send you a link to reset your password.
             </Text>
           </div>
+
+          {error ? (
+            <Alert
+              type="error"
+              showIcon
+              message={error}
+              style={{ marginBottom: 20 }}
+            />
+          ) : null}
 
           <Form
             name="forgotPassword"

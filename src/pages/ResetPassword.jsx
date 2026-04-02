@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
-import { Form, Input, Button, Card, Typography, message, Result } from 'antd';
+import { Form, Input, Button, Card, Typography, Alert, Result, Spin } from 'antd';
 import { LockOutlined } from '@ant-design/icons';
-import { Link, useNavigate, useSearchParams } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import { useAuth } from '../hooks/useAuth';
 import './ResetPassword.css';
 
@@ -10,32 +10,63 @@ const { Title, Text } = Typography;
 const ResetPassword = () => {
   const [loading, setLoading] = useState(false);
   const [passwordReset, setPasswordReset] = useState(false);
-  const [searchParams] = useSearchParams();
-  const navigate = useNavigate();
-  const { updatePassword } = useAuth();
+  const { updatePassword, loading: authLoading, session, isRecoveryMode, error, clearError } = useAuth();
 
   useEffect(() => {
-    // Check if we have the necessary parameters from the email link
-    const accessToken = searchParams.get('access_token');
-    const type = searchParams.get('type');
-
-    if (type !== 'recovery' || !accessToken) {
-      message.error('Invalid or expired reset link');
-      navigate('/forgot-password');
-    }
-  }, [searchParams, navigate]);
+    clearError();
+  }, [clearError]);
 
   const onFinish = async (values) => {
     setLoading(true);
     try {
       await updatePassword(values.password);
       setPasswordReset(true);
-    } catch (error) {
-      message.error(error.message || 'Failed to reset password. Please try again.');
+    } catch {
+      // Inline state handles the error.
     } finally {
       setLoading(false);
     }
   };
+
+  if (authLoading) {
+    return (
+      <div className="reset-password-page">
+        <div className="reset-password-container">
+          <Card className="reset-password-card">
+            <div className="reset-password-loading">
+              <Spin size="large" />
+              <Title level={3}>Checking your recovery session</Title>
+              <Text type="secondary">Please wait while we validate your reset link.</Text>
+            </div>
+          </Card>
+        </div>
+      </div>
+    );
+  }
+
+  if (!session && !isRecoveryMode && !passwordReset) {
+    return (
+      <div className="reset-password-page">
+        <div className="reset-password-container">
+          <Card className="reset-password-card">
+            <Result
+              status="warning"
+              title="This reset link is invalid or has expired"
+              subTitle="Request a new password reset email and open the newest link from your inbox."
+              extra={[
+                <Link to="/forgot-password" key="retry">
+                  <Button type="primary">Request a new link</Button>
+                </Link>,
+                <Link to="/login" key="login">
+                  <Button>Back to login</Button>
+                </Link>
+              ]}
+            />
+          </Card>
+        </div>
+      </div>
+    );
+  }
 
   if (passwordReset) {
     return (
@@ -45,10 +76,10 @@ const ResetPassword = () => {
             <Result
               status="success"
               title="Password Reset Successful!"
-              subTitle="Your password has been updated successfully. You can now log in with your new password."
+              subTitle="Your password has been updated successfully. You can continue straight into Beautify."
               extra={[
-                <Link to="/login" key="login">
-                  <Button type="primary">Go to Login</Button>
+                <Link to="/dashboard" key="dashboard">
+                  <Button type="primary">Go to Dashboard</Button>
                 </Link>
               ]}
             />
@@ -65,9 +96,18 @@ const ResetPassword = () => {
           <div className="reset-password-header">
             <Title level={2}>Set New Password</Title>
             <Text type="secondary">
-              Please enter your new password below.
+              Choose a new password for your Beautify account.
             </Text>
           </div>
+
+          {error ? (
+            <Alert
+              type="error"
+              showIcon
+              message={error}
+              style={{ marginBottom: 20 }}
+            />
+          ) : null}
 
           <Form
             name="resetPassword"

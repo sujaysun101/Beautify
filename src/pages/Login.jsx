@@ -1,32 +1,40 @@
 import React, { useState, useEffect } from 'react';
-import { Form, Input, Button, Card, Typography, message, Space, Divider } from 'antd';
+import { Form, Input, Button, Card, Typography, Space, Divider, Alert } from 'antd';
 import { UserOutlined, LockOutlined, GoogleOutlined, GithubOutlined } from '@ant-design/icons';
-import { Link, useNavigate } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { useAuth } from '../hooks/useAuth';
 import './Login.css';
 
 const { Title, Text } = Typography;
+const testLoginEmail = import.meta.env.VITE_TEST_LOGIN_EMAIL;
+const testLoginPassword = import.meta.env.VITE_TEST_LOGIN_PASSWORD;
+const hasTestLoginCredentials = Boolean(testLoginEmail && testLoginPassword);
 
 const Login = () => {
+  const [form] = Form.useForm();
   const [loading, setLoading] = useState(false);
   const [socialLoading, setSocialLoading] = useState('');
-  const { login, loginWithProvider, isAuthenticated } = useAuth();
+  const { login, loginWithProvider, isAuthenticated, error, clearError } = useAuth();
   const navigate = useNavigate();
+  const location = useLocation();
+  const redirectTarget = location.state?.from?.pathname || '/dashboard';
 
-  // Redirect if already authenticated
   useEffect(() => {
     if (isAuthenticated) {
-      navigate('/dashboard');
+      navigate(redirectTarget, { replace: true });
     }
-  }, [isAuthenticated, navigate]);
+  }, [isAuthenticated, navigate, redirectTarget]);
+
+  useEffect(() => {
+    clearError();
+  }, [clearError]);
 
   const onFinish = async (values) => {
     setLoading(true);
     try {
       await login(values.email, values.password);
-      // Navigation will happen automatically via useEffect
     } catch {
-      message.error('Login failed. Please try again.');
+      // Inline alert handles the error.
     } finally {
       setLoading(false);
     }
@@ -35,13 +43,23 @@ const Login = () => {
   const handleSocialLogin = async (provider) => {
     setSocialLoading(provider);
     try {
-      await loginWithProvider(provider.toLowerCase());
-      // OAuth redirect will happen automatically
+      await loginWithProvider(provider.toLowerCase(), redirectTarget);
     } catch {
-      message.error(`${provider} login failed. Please try again.`);
+      // Inline alert handles the error.
     } finally {
       setSocialLoading('');
     }
+  };
+
+  const handleFillTestCredentials = () => {
+    if (!hasTestLoginCredentials) {
+      return;
+    }
+
+    form.setFieldsValue({
+      email: testLoginEmail,
+      password: testLoginPassword
+    });
   };
 
   return (
@@ -53,7 +71,17 @@ const Login = () => {
             <Text type="secondary">Sign in to your Beautify account</Text>
           </div>
 
+          {error ? (
+            <Alert
+              type="error"
+              showIcon
+              message={error}
+              style={{ marginBottom: 20 }}
+            />
+          ) : null}
+
           <Form
+            form={form}
             name="login"
             onFinish={onFinish}
             autoComplete="off"
@@ -96,6 +124,22 @@ const Login = () => {
               >
                 Sign In
               </Button>
+            </Form.Item>
+
+            <Form.Item className="test-login-item">
+              <Button
+                block
+                onClick={handleFillTestCredentials}
+                className="test-login-button"
+                disabled={!hasTestLoginCredentials}
+              >
+                Use Test Credentials
+              </Button>
+              <Text type="secondary" className="test-login-help">
+                {hasTestLoginCredentials
+                  ? 'Autofills the shared demo account for quick testing.'
+                  : 'Set VITE_TEST_LOGIN_EMAIL and VITE_TEST_LOGIN_PASSWORD to enable autofill.'}
+              </Text>
             </Form.Item>
           </Form>
 

@@ -1,37 +1,72 @@
-import React, { useEffect } from 'react';
-import { Card, Spin, Typography, Result } from 'antd';
-import { useNavigate } from 'react-router-dom';
+import React, { useEffect, useState } from 'react';
+import { Card, Spin, Typography, Result, Button } from 'antd';
+import { Link, useNavigate, useSearchParams } from 'react-router-dom';
 import { supabase } from '../config/supabase';
 import './AuthCallback.css';
 
 const { Title, Text } = Typography;
 
 const AuthCallback = () => {
+  const [status, setStatus] = useState('loading');
+  const [errorMessage, setErrorMessage] = useState('');
   const navigate = useNavigate();
+  const [searchParams] = useSearchParams();
 
   useEffect(() => {
     const handleAuthCallback = async () => {
       try {
-        // Get the session from the URL fragments
+        const next = searchParams.get('next') || '/dashboard';
+        const code = searchParams.get('code');
+        const callbackError = searchParams.get('error_description') || searchParams.get('error');
+
+        if (callbackError) {
+          throw new Error(callbackError);
+        }
+
+        if (code) {
+          const { error } = await supabase.auth.exchangeCodeForSession(code);
+          if (error) throw error;
+        }
+
         const { data, error } = await supabase.auth.getSession();
-        
         if (error) throw error;
 
-        if (data.session) {
-          // User is authenticated, redirect to dashboard
-          navigate('/dashboard', { replace: true });
-        } else {
-          // No session found, redirect to login
-          navigate('/login', { replace: true });
+        if (!data.session) {
+          throw new Error('We could not complete your sign-in session.');
         }
+
+        setStatus('success');
+        navigate(next, { replace: true });
       } catch (error) {
         console.error('Auth callback error:', error);
-        navigate('/login', { replace: true });
+        setStatus('error');
+        setErrorMessage(error.message || 'We could not complete authentication.');
       }
     };
 
     handleAuthCallback();
-  }, [navigate]);
+  }, [navigate, searchParams]);
+
+  if (status === 'error') {
+    return (
+      <div className="auth-callback-page">
+        <div className="auth-callback-container">
+          <Card className="auth-callback-card">
+            <Result
+              status="error"
+              title="Authentication could not be completed"
+              subTitle={errorMessage}
+              extra={[
+                <Link to="/login" key="login">
+                  <Button type="primary">Back to login</Button>
+                </Link>
+              ]}
+            />
+          </Card>
+        </div>
+      </div>
+    );
+  }
 
   return (
     <div className="auth-callback-page">

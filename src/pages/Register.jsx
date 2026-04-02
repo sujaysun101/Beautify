@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
-import { Form, Input, Button, Card, Typography, message, Space, Divider } from 'antd';
+import { Form, Input, Button, Card, Typography, Space, Divider, Alert, Result } from 'antd';
 import { UserOutlined, LockOutlined, MailOutlined, GoogleOutlined, GithubOutlined } from '@ant-design/icons';
-import { Link, useNavigate } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { useAuth } from '../hooks/useAuth';
 import './Register.css';
 
@@ -10,26 +10,35 @@ const { Title, Text } = Typography;
 const Register = () => {
   const [loading, setLoading] = useState(false);
   const [socialLoading, setSocialLoading] = useState('');
-  const { signUp, loginWithProvider, isAuthenticated } = useAuth();
+  const [verificationEmail, setVerificationEmail] = useState('');
+  const { signUp, loginWithProvider, isAuthenticated, error, clearError } = useAuth();
   const navigate = useNavigate();
+  const location = useLocation();
+  const redirectTarget = location.state?.from?.pathname || '/dashboard';
 
-  // Redirect if already authenticated
   useEffect(() => {
     if (isAuthenticated) {
-      navigate('/dashboard');
+      navigate(redirectTarget, { replace: true });
     }
-  }, [isAuthenticated, navigate]);
+  }, [isAuthenticated, navigate, redirectTarget]);
+
+  useEffect(() => {
+    clearError();
+  }, [clearError]);
 
   const onFinish = async (values) => {
     setLoading(true);
     try {
-      await signUp(values.email, values.password, {
+      const result = await signUp(values.email, values.password, {
         full_name: values.fullName,
         display_name: values.fullName
       });
-      // Note: User might need to confirm email
+
+      if (result.requiresEmailVerification) {
+        setVerificationEmail(values.email);
+      }
     } catch {
-      message.error('Registration failed. Please try again.');
+      // Inline alert handles the error.
     } finally {
       setLoading(false);
     }
@@ -38,14 +47,37 @@ const Register = () => {
   const handleSocialLogin = async (provider) => {
     setSocialLoading(provider);
     try {
-      await loginWithProvider(provider.toLowerCase());
-      // OAuth redirect will happen automatically
+      await loginWithProvider(provider.toLowerCase(), redirectTarget);
     } catch {
-      message.error(`${provider} registration failed. Please try again.`);
+      // Inline alert handles the error.
     } finally {
       setSocialLoading('');
     }
   };
+
+  if (verificationEmail) {
+    return (
+      <div className="register-page">
+        <div className="register-container">
+          <Card className="register-card">
+            <Result
+              status="success"
+              title="Check your inbox"
+              subTitle={`We sent a confirmation link to ${verificationEmail}. Open that email to activate your Beautify account.`}
+              extra={[
+                <Button key="retry" onClick={() => setVerificationEmail('')}>
+                  Use a different email
+                </Button>,
+                <Link to="/login" key="login">
+                  <Button type="primary">Back to login</Button>
+                </Link>
+              ]}
+            />
+          </Card>
+        </div>
+      </div>
+    );
+  }
 
   return (
     <div className="register-page">
@@ -55,6 +87,15 @@ const Register = () => {
             <Title level={2}>Create Account</Title>
             <Text type="secondary">Join Beautify to get started</Text>
           </div>
+
+          {error ? (
+            <Alert
+              type="error"
+              showIcon
+              message={error}
+              style={{ marginBottom: 20 }}
+            />
+          ) : null}
 
           <Form
             name="register"
