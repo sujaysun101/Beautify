@@ -26,6 +26,19 @@ The update script only runs `npm install`. Docker and Supabase must be started m
    with `EACCES`. If that happens, fix it with `sudo chown -R ubuntu:ubuntu supabase`.
 3. Load the schema once after the stack is up (idempotent — uses `CREATE ... IF NOT EXISTS`):
    `docker exec -i supabase_db_workspace psql postgresql://postgres:postgres@127.0.0.1:5432/postgres < database/schema.sql`
+   Then grant the Data API roles access to the new tables. `database/schema.sql` enables RLS +
+   policies but does **not** `GRANT` table privileges (a hosted Supabase project grants these by
+   default; a raw `psql` load does not), so without this step authenticated inserts fail with
+   `permission denied for table ... (42501)`:
+   ```
+   docker exec -i supabase_db_workspace psql postgresql://postgres:postgres@127.0.0.1:5432/postgres <<'SQL'
+   GRANT USAGE ON SCHEMA public TO anon, authenticated, service_role;
+   GRANT ALL ON ALL TABLES IN SCHEMA public TO anon, authenticated, service_role;
+   GRANT ALL ON ALL SEQUENCES IN SCHEMA public TO anon, authenticated, service_role;
+   ALTER DEFAULT PRIVILEGES IN SCHEMA public GRANT ALL ON TABLES TO anon, authenticated, service_role;
+   SQL
+   ```
+   RLS policies still enforce per-user row access; the grants only make the tables reachable.
 4. Create `.env` (gitignored) pointing at the local stack. Get the values with `supabase status -o env`:
    - `VITE_SUPABASE_URL=http://127.0.0.1:54321`
    - `VITE_SUPABASE_ANON_KEY=<ANON_KEY from `supabase status -o env`>`
@@ -42,3 +55,13 @@ The update script only runs `npm install`. Docker and Supabase must be started m
 - Studio: http://127.0.0.1:54323 · Mailpit (captured emails): http://127.0.0.1:54324
 - The "AI" skin analysis in `src/components/SkinQuiz/steps/ProcessingStep.jsx` is **mocked**
   (hardcoded results via `setTimeout`); there is no real AI/ML backend service in this repo.
+
+### Known pre-existing app bug (not an environment issue)
+
+The four auth pages (`src/pages/Login.jsx`, `Register.jsx`, `ForgotPassword.jsx`, `ResetPassword.jsx`)
+each run `useEffect(() => { clearError() }, [clearError])`. `clearError` from `AuthContext` is a new
+function on every render and the `CLEAR_ERROR` reducer always returns a new state object, so these
+pages hit React's "Maximum update depth exceeded" infinite loop and render blank. The marketing pages
+(`/`, `/product`, `/about`) are unaffected. This blocks the register/login → dashboard → SkinIQ UI
+flow until fixed (e.g. wrap `clearError` in `useCallback`, or use `[]` deps). It is unrelated to
+environment setup.
